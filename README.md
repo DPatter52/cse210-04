@@ -20,7 +20,6 @@ The project files and folders are organized as follows:
 ```
 root                    (project root folder)
 +-- cse210-04           (source code for game)
-  +-- data              (data files for game)
   +-- game              (specific game classes)
   +-- __main__.py       (entry point for program)
 +-- README.md           (general info)
