@@ -2,7 +2,7 @@ import os
 import random
 
 from game.casting.actor import Actor
-from game.casting.artifact import Artifact
+from game.casting.object import Object
 from game.casting.cast import Cast
 
 from game.directing.director import Director
@@ -14,17 +14,16 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 
-FRAME_RATE = 12
+FRAME_RATE = 20
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 15
 FONT_SIZE = 15
 COLS = 60
 ROWS = 40
-CAPTION = "Robot Finds Kitten"
-DATA_PATH = os.path.dirname(os.path.abspath(__file__)) + "/data/messages.txt" 
+CAPTION = "Robot Gets Gems" 
 WHITE = Color(255, 255, 255)
-DEFAULT_ARTIFACTS = 40
+DEFAULT_OBJECTS = 40
 
 
 def main():
@@ -46,19 +45,15 @@ def main():
     position = Point(x, y)
 
     robot = Actor()
-    robot.set_text("#")
+    robot.set_text("\_/")
     robot.set_font_size(FONT_SIZE)
     robot.set_color(WHITE)
     robot.set_position(position)
     cast.add_actor("robots", robot)
     
-    # create the artifacts
-    with open(DATA_PATH) as file:
-        data = file.read()
-        messages = data.splitlines()
-
-    for n in range(DEFAULT_ARTIFACTS):
-        message = messages[n]
+    # create the objects
+    
+    for n in range(DEFAULT_OBJECTS):
 
         x = random.randint(1, COLS - 1)
         y = random.randint(1, ROWS - 1)
@@ -70,20 +65,18 @@ def main():
         b = random.randint(0, 255)
         color = Color(r, g, b)
         
-        gems = Artifact()
+        gems = Object()
         gems.set_text("*")
         gems.set_font_size(FONT_SIZE)
         gems.set_color(color)
         gems.set_position(position)
-        gems.set_message(message)
         cast.add_actor("gems", gems)
 
-        rocks = Artifact()
+        rocks = Object()
         rocks.set_text("O")
         rocks.set_font_size(FONT_SIZE)
         rocks.set_color(color)
         rocks.set_position(position)
-        rocks.set_message(message)
         cast.add_actor("rocks", rocks)
     
     # start the game

@@ -42,25 +42,35 @@ class Director:
         robot.set_velocity(velocity)        
 
     def _do_updates(self, cast):
-        """Updates the robot's position and resolves any collisions with artifacts.
+        """Updates the robot's position and resolves any collisions with objects.
         
         Args:
             cast (Cast): The cast of actors.
         """
         banner = cast.get_first_actor("banners")
         robot = cast.get_first_actor("robots")
-        artifacts = cast.get_actors("artifacts")
+        rocks= cast.get_actors("rocks")
+        gems = cast.get_actors("gems")
+        score = 0
 
-        banner.set_text("")
+        banner.set_text("Score: ")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
-        for artifact in artifacts:
-            if robot.get_position().equals(artifact.get_position()):
-                message = artifact.get_message()
-                banner.set_text(message)    
-        
+
+        #Maybe a good idea for the point system??
+        for rock in rocks:
+            if robot.get_position().equals(rock.get_position()):
+                score += 50
+
+        for gem in gems:
+            if robot.get_position().equals(gem.get_position()):
+                score -= 100
+                
+
+
+
     def _do_outputs(self, cast):
         """Draws the actors on the screen.
         
