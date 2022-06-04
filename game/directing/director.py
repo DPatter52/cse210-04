@@ -31,14 +31,19 @@ class Director:
             self._do_outputs(cast)
         self._video_service.close_window()
 
-    def end_game(self, score):
+    def check_for_end_game(self, score, cast):
         """Ends the game based on the score. If the score goes below zero, the 
         player loses. If it gets above 500, the player wins"""
 
         """Args:
-            score (Score): The current score"""
+            score (Score): The current score
+            cast (Cast): The cast of actors.
+            """
+        banner = cast.get_first_actor("banners")
         if score < 0:
-            
+            banner.set_text("Sorry, you lost. Maybe you need some more practice...")
+        elif score > 500:
+            banner.set_text("You won! How does it feel to be rich??")
 
     def _get_inputs(self, cast):
         """Gets directional input from the keyboard and applies it to the robot.
