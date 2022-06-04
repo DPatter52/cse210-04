@@ -14,6 +14,14 @@ class Score():
         return self._score1
     
     def update_score(self):
+<<<<<<< HEAD
+=======
+
+        robot = cast.get_first_actor("robots")
+        rocks= cast.get_actors("rocks")
+        gems = cast.get_actors("gems")
+
+>>>>>>> 852a7504500860d95ce7138dad15b3649dd4207c
         self._totalscore = Score().get_score()
         if robot.get_position().equals(rock.get_position()):
             self._totalscore -= 30
