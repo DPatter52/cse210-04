@@ -42,7 +42,7 @@ class Director:
         banner = cast.get_first_actor("banners")
         if score <= 0:
             banner.set_text("Sorry, you lost. Maybe you need some more practice...")
-        elif score > 500:
+        elif score >= 500:
             banner.set_text("You won! How does it feel to be rich??")
 
     def _get_inputs(self, cast):
