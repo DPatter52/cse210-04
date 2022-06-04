@@ -40,7 +40,7 @@ class Director:
             cast (Cast): The cast of actors.
             """
         banner = cast.get_first_actor("banners")
-        if score <= 0:
+        if self._totalscore <= 0:
             banner.set_text("Sorry, you lost. Maybe you need some more practice...")
         elif score >= 500:
             banner.set_text("You won! How does it feel to be rich??")
