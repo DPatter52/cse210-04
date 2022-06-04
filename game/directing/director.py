@@ -31,6 +31,15 @@ class Director:
             self._do_outputs(cast)
         self._video_service.close_window()
 
+    def end_game(self, score):
+        """Ends the game based on the score. If the score goes below zero, the 
+        player loses. If it gets above 500, the player wins"""
+
+        """Args:
+            score (Score): The current score"""
+        if score < 0:
+            
+
     def _get_inputs(self, cast):
         """Gets directional input from the keyboard and applies it to the robot.
         
