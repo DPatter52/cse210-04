@@ -1,3 +1,5 @@
+from game.shared.score import Score
+
 class Director:
     """A person who directs the game. 
     
@@ -39,10 +41,13 @@ class Director:
             score (Score): The current score
             cast (Cast): The cast of actors.
             """
+        
         banner = cast.get_first_actor("banners")
-        if self._totalscore <= 0:
+        score = Score()
+        total_score = score.update_score()
+        if total_score <= 0:
             banner.set_text("Sorry, you lost. Maybe you need some more practice...")
-        elif score >= 500:
+        elif total_score >= 500:
             banner.set_text("You won! How does it feel to be rich??")
 
     def _get_inputs(self, cast):
