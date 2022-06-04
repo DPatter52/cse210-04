@@ -42,7 +42,7 @@ class Director:
         robot.set_velocity(velocity)        
 
     def _do_updates(self, cast):
-        """Updates the robot's position and resolves any collisions with objects.
+        """Updates the robot's, gem's, and rock's position and resolves any collisions with objects.
         
         Args:
             cast (Cast): The cast of actors.
@@ -51,22 +51,23 @@ class Director:
         robot = cast.get_first_actor("robots")
         rocks= cast.get_actors("rocks")
         gems = cast.get_actors("gems")
-        score = 0
-
+        
         banner.set_text("Score: ")
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
         
-
-        #Maybe a good idea for the point system??
         for rock in rocks:
             if robot.get_position().equals(rock.get_position()):
-                score += 50
+                cast.remove_actor("rocks", rock)
+            for gem in gems:
+
+                if rock.get_position().equals(gem.get_position()):
+                    cast.remove_actor("rocks", rock)
 
         for gem in gems:
             if robot.get_position().equals(gem.get_position()):
-                score -= 100
+                cast.remove_actor("gems", gem)
                 
 
 

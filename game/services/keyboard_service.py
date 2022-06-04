@@ -1,5 +1,6 @@
 import pyray
 from game.shared.point import Point
+from game.services.video_service import VideoService
 
 
 class KeyboardService:
@@ -35,7 +36,24 @@ class KeyboardService:
         if pyray.is_key_down(pyray.KEY_RIGHT):
             dx = 1
 
+        if pyray.is_key_down(pyray.KEY_UP):
+            dy = -1 
+        
+        if pyray.is_key_down(pyray.KEY_DOWN):
+            dy = 1
+
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
         
         return direction
+
+    def falling_object(self):
+        dx = 0
+        dy = 0
+        while not pyray.window_should_close:
+            dy =  dy ++ 1
+
+            direction = Point(dx, dy) 
+            direction = direction.scale(self._cell_size)
+
+            return direction 
