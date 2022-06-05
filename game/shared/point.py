@@ -19,6 +19,12 @@ class Point:
         self._x = x
         self._y = y
 
+
+    def add_y(self, other):
+        x = self._x
+        y = 1 + other.get_y()
+        return Point(x, y)
+
     def add(self, other):
         """Gets a new point that is the sum of this and the given one.
 

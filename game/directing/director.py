@@ -1,5 +1,5 @@
 from game.shared.score import Score
-from tkinter import messagebox
+from game.shared.point import Point
 
 class Director:
     """A person who directs the game. 
@@ -96,10 +96,7 @@ class Director:
                 self.total_score = self.score.get_score()
                 cast.remove_actor("gems", gem)
                 
-
-        
         banner.set_text(f"Score: {self.total_score}" )
-        
         
 
     def _do_outputs(self, cast):

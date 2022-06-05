@@ -47,13 +47,15 @@ class KeyboardService:
         
         return direction
 
+
+
     def falling_object(self):
         dx = 0
         dy = 0
-        while not pyray.window_should_close:
-            dy =  dy ++ 1
+        direction = Point(dx, dy)
 
-            direction = Point(dx, dy) 
+        while not pyray.window_should_close:
+            dy += 1
             direction = direction.scale(self._cell_size)
 
-            return direction 
+        return direction 

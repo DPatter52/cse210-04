@@ -77,6 +77,7 @@ class Object(Actor):
         """
         self._color = color
 
+
     def set_position(self, position):
         """Updates the position to the given one.
         
@@ -84,7 +85,7 @@ class Object(Actor):
             position (Point): The given position.
         """
         self._position = position
-    
+
     def set_font_size(self, font_size):
         """Updates the font size to the given one.
         
@@ -108,3 +109,4 @@ class Object(Actor):
             velocity (Point): The given velocity.
         """
         self._velocity = velocity
+

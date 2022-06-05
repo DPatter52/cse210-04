@@ -7,7 +7,7 @@ from tkinter import messagebox
 class Score(): 
 
     def __init__(self):
-        """Intitialies the score as well as changes the font to normal"""
+        """Intitialies and updates the score"""
         self._score1 = 500 
         
 
@@ -23,19 +23,7 @@ class Score():
         elif collision == "inGems":
             self._totalscore += 20
         else: 
-            self._totalscore = self._totalscore
-
-
-        #for rock in rocks:
-            #if robot.get_position().equals(rock.get_position()):
-                #self._totalscore -= 30
-                
-
-        #for gem in gems:
-            #if robot.get_position().equals(gem.get_position()):
-                #self._totalscore += 20
-                
-                
+            self._totalscore = self._totalscore         
 
         self._score1 = self._totalscore
         return self._score1
