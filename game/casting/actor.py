@@ -22,7 +22,7 @@ class Actor:
         self._font_size = 15
         self._color = Color(255, 255, 255)
         self._position = Point(0, 0)
-        self._velocity = Point(0, 0)
+        self._velocity = Point(0, 2)
 
     def get_color(self):
         """Gets the actor's color as a tuple of three ints (r, g, b).
@@ -117,3 +117,21 @@ class Actor:
             velocity (Point): The given velocity.
         """
         self._velocity = velocity
+    
+    def get_current_y(self):
+        y = self._position.get_y()
+
+        return y
+
+    def get_current_x(self):
+        x = self._position.get_x()
+
+        return x
+    def advance(self, object, max_x, max_y):
+       
+        object.move_next(max_x, max_y)
+        #current_point = object.get_position()
+        object.set_position(self._position.add(self._velocity))
+
+  
+        

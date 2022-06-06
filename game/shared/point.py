@@ -47,6 +47,17 @@ class Point:
         Returns: 
             boolean: True if both x and y are equal; false if otherwise.
         """
+        # is_collision = False
+        # max_Xlimt = self._x + 1
+        # min_Xlimt = self._x - 1
+
+        # max_Ylimt = self._y + 1
+        # min_Ylimt = self._y - 1
+
+        # #max_Otherlimt = other.get_x() + 1
+        # #min_Otherlimt = other.get_Y() - 1
+        
+        
         return self._x == other.get_x() and self._y == other.get_y()
 
     def get_x(self):
