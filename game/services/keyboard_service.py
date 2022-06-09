@@ -13,7 +13,7 @@ class KeyboardService:
         cell_size (int): For scaling directional input to a grid.
     """
 
-    def __init__(self, cell_size = 1):
+    def __init__(self, cell_size = 22):
         """Constructs a new KeyboardService using the specified cell size.
         
         Args:
@@ -37,10 +37,10 @@ class KeyboardService:
             dx = 1
 
         if pyray.is_key_down(pyray.KEY_UP):
-            dy = -1 
+            dy = 0
         
         if pyray.is_key_down(pyray.KEY_DOWN):
-            dy = 1
+            dy = 0
 
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)

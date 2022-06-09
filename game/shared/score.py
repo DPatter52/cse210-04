@@ -20,8 +20,10 @@ class Score():
 
         if collision == "inRocks":
             self._totalscore -= 30
+        
         elif collision == "inGems":
             self._totalscore += 20
+           
         else: 
             self._totalscore = self._totalscore         
 
