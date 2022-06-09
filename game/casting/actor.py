@@ -1,5 +1,7 @@
 from game.shared.color import Color
 from game.shared.point import Point
+import math
+import random
 
 
 class Actor:
@@ -77,7 +79,6 @@ class Actor:
         self._position = Point(x, y)
 
 
-
     def set_color(self, color):
         """Updates the color to the given one.
         
@@ -127,11 +128,24 @@ class Actor:
         x = self._position.get_x()
 
         return x
+
     def advance(self, object, max_x, max_y):
-       
+
         object.move_next(max_x, max_y)
-        #current_point = object.get_position()
         object.set_position(self._position.add(self._velocity))
 
-  
+
+    def get_distance(self, object1, object2):
+        distance = math.dist([object1.get_current_x(), object1.get_current_y()], [object2.get_current_x(), object2.get_current_y()])
+
+        return distance
         
+
+    def move_object(self, object):
+
+        x = random.randint(1, 60)
+        y = random.randint(0, 0)
+        position = Point(x, y)
+        position = position.scale(15)
+
+        object.set_position(position)

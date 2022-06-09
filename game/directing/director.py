@@ -1,5 +1,5 @@
 from game.shared.score import Score
-from game.shared.point import Point
+from game.casting.actor import Actor
 
 class Director:
     """A person who directs the game. 
@@ -21,6 +21,7 @@ class Director:
         self._keyboard_service = keyboard_service
         self._video_service = video_service
         self.score = Score()
+        self.actor = Actor()
         self.total_score = self.score.get_score()
         
     def start_game(self, cast):
@@ -78,34 +79,28 @@ class Director:
         max_x = self._video_service.get_width()
         max_y = self._video_service.get_height()
         robot.move_next(max_x, max_y)
-        
-#It's not done. It has a error to find
-        
-            
-            # rock.set_velocity(+3)
-            # max_x = self._video_service.get_width()
-            # max_y = self._video_service.get_height()
-            # rock.move_next(max_x, max_y)
 
         
         for rock in rocks:
             rock.advance(rock,max_x,max_y)
-            if robot.get_position().equals(rock.get_position()):
+            if robot.get_distance(robot, rock) < 10:
+                self.actor.move_object(rock)
                 self.score.update_score("inRocks")
                 self.total_score = self.score.get_score()
-                cast.remove_actor("rocks", rock)
+                
 
             for gem in gems:
-                if rock.get_position().equals(gem.get_position()):
-                    cast.remove_actor("rocks", rock)
+                if gem.get_distance(rock, gem) < 5:
+                    self.actor.move_object(gem)
                     
 
         for gem in gems:
             gem.advance(gem,max_x,max_y)
-            if robot.get_position().equals(gem.get_position()):
+            if robot.get_distance(robot, gem) < 10:
+                self.actor.move_object(gem)
                 self.score.update_score("inGems")
                 self.total_score = self.score.get_score()
-                cast.remove_actor("gems", gem)
+                
                 
         banner.set_text(f"Score: {self.total_score}" )
         

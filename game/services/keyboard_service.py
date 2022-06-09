@@ -36,26 +36,7 @@ class KeyboardService:
         if pyray.is_key_down(pyray.KEY_RIGHT):
             dx = 1
 
-        if pyray.is_key_down(pyray.KEY_UP):
-            dy = -1 
-        
-        if pyray.is_key_down(pyray.KEY_DOWN):
-            dy = 1
-
         direction = Point(dx, dy)
         direction = direction.scale(self._cell_size)
         
         return direction
-
-
-
-    def falling_object(self):
-        dx = 0
-        dy = 0
-        direction = Point(dx, dy)
-
-        while not pyray.window_should_close:
-            dy += 1
-            direction = direction.scale(self._cell_size)
-
-        return direction 

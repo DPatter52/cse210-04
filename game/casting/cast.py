@@ -1,3 +1,9 @@
+import random
+from game.shared.point import Point
+from game.shared.color import Color
+from game.casting.object import Object
+
+
 class Cast:
     """A collection of actors.
 
@@ -24,6 +30,7 @@ class Cast:
             
         if not actor in self._actors[group]:
             self._actors[group].append(actor)
+
 
     def get_actors(self, group):
         """Gets the actors in the given group.

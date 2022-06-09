@@ -1,5 +1,6 @@
 import os
 import random
+import math
 
 from game.casting.actor import Actor
 from game.casting.object import Object
@@ -14,17 +15,17 @@ from game.shared.color import Color
 from game.shared.point import Point
 
 
-FRAME_RATE = 15
+FRAME_RATE = 20
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 15
 FONT_SIZE = 20
 COLS = 60
-ROWS = 40
+ROWS = 60
 CAPTION = "Robot Gets Gems" 
 WHITE = Color(255, 255, 255)
 DEFAULT_ROCKS = 40
-DEFAULT_GEMS = 15
+DEFAULT_GEMS = 40
 
 
 def main():
@@ -42,7 +43,7 @@ def main():
     
     # create the robot
     x = int(MAX_X / 2)
-    y = int(585)
+    y = int(580)
     position = Point(x, y)
 
     robot = Actor()
@@ -54,10 +55,11 @@ def main():
     
 
     # create the gems/rocks
+    
     for n in range(DEFAULT_GEMS):
-        vy = 0
-        x = random.randint(1, COLS - 1)
-        y = random.randint(1, ROWS - 1)
+        
+        x = random.randint(5, COLS - 5)
+        y = random.randint(5, ROWS - 5)
         position = Point(x, y)
         position = position.scale(CELL_SIZE)
         

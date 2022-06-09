@@ -1,8 +1,3 @@
-from winreg import REG_OPTION_BACKUP_RESTORE
-from game.casting.cast import Cast
-from tkinter import messagebox
-
-
 
 class Score(): 
 
@@ -19,9 +14,9 @@ class Score():
         self._totalscore = self.get_score() 
 
         if collision == "inRocks":
-            self._totalscore -= 30
+            self._totalscore -= 100
         elif collision == "inGems":
-            self._totalscore += 20
+            self._totalscore += 100
         else: 
             self._totalscore = self._totalscore         
 
